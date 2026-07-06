@@ -1,0 +1,210 @@
+<style>
+  :root{
+    --paper:#e9dfc4; --paper-hi:#f1e8d0; --paper-lo:#e2d7ba;
+    --ink:#312a1c; --ink-soft:#6d5f45; --ink-faint:#9a8a6c;
+    --rule:#463c29; --accent:#7c3a2b; --gold:#a8842f;
+    --serif:"Hoefler Text","Baskerville","Palatino Linotype",Palatino,"Iowan Old Style",Georgia,"Times New Roman",serif;
+  }
+  *{box-sizing:border-box}
+  .stage{
+    background:var(--paper);
+    background-image:
+      radial-gradient(120% 80% at 50% 0%, rgba(255,250,235,.5), transparent 55%),
+      radial-gradient(130% 130% at 50% 120%, rgba(60,48,26,.16), transparent 55%),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.05'/%3E%3C/svg%3E");
+    color:var(--ink); font-family:var(--serif);
+    padding:clamp(14px,2.2vw,30px); min-height:100vh;
+    -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+  }
+  .plate{
+    max-width:1320px; margin:0 auto; position:relative;
+    border:1.5px solid var(--rule); outline:1px solid var(--rule); outline-offset:5px;
+    padding:clamp(18px,2.4vw,32px) clamp(16px,2.4vw,34px) clamp(20px,2.4vw,30px);
+    background:linear-gradient(180deg, rgba(255,252,242,.30), rgba(226,215,186,.16));
+  }
+  .corner{position:absolute;width:30px;height:30px;color:var(--rule);opacity:.85}
+  .corner.tl{top:-2px;left:-2px}.corner.tr{top:-2px;right:-2px;transform:scaleX(-1)}
+  .corner.bl{bottom:-2px;left:-2px;transform:scaleY(-1)}.corner.br{bottom:-2px;right:-2px;transform:scale(-1)}
+
+  /* header row */
+  .head{display:flex;align-items:center;gap:18px;border-bottom:1px solid var(--rule);padding-bottom:14px;margin-bottom:16px;flex-wrap:wrap}
+  .rose{width:56px;height:56px;color:var(--ink);flex-shrink:0}
+  .head .tt{flex:1;min-width:200px}
+  .kicker{font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--ink-soft);margin:0 0 3px}
+  h1{font-size:clamp(24px,3.4vw,38px);margin:0;font-weight:600;letter-spacing:.01em;line-height:1}
+  .epigraph{font-style:italic;font-size:13px;color:var(--ink-soft);margin:5px 0 0}
+  .legend{display:flex;flex-direction:column;gap:4px;font-size:11px;color:var(--ink-soft)}
+  .legend .li{display:flex;align-items:center;gap:6px;white-space:nowrap}
+  .pip{width:11px;height:11px;border-radius:50%;border:1.3px solid var(--rule);display:inline-block;flex-shrink:0}
+  .pip.heavy{background:var(--accent);border-color:var(--accent)}
+  .pip.light{background:var(--gold);border-color:var(--gold);box-shadow:inset 0 0 0 2px var(--paper-hi)}
+  .pip.deleg{background:transparent}
+
+  /* triptych */
+  .triptych{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0}
+  @media(max-width:840px){.triptych{grid-template-columns:1fr}}
+  .col{padding:0 16px;position:relative}
+  .col + .col{border-left:1px solid var(--rule)}
+  @media(max-width:840px){.col + .col{border-left:0;border-top:1px solid var(--rule);margin-top:10px;padding-top:12px}}
+  .col:first-child{padding-left:4px}.col:last-child{padding-right:4px}
+  .phase{text-align:center;margin-bottom:12px}
+  .phase .pn{font-variant:small-caps;letter-spacing:.2em;font-size:11px;color:var(--ink-faint)}
+  .phase .pt{font-variant:small-caps;letter-spacing:.1em;font-size:17px;font-weight:600;color:var(--ink);display:block;margin-top:1px}
+  .phase .pd{font-style:italic;font-size:11px;color:var(--ink-soft)}
+
+  .card{position:relative;padding:7px 8px 7px 30px;border-bottom:1px dotted var(--ink-faint)}
+  .card:last-child{border-bottom:0}
+  .card .np{position:absolute;left:2px;top:9px}
+  .card .num{position:absolute;left:15px;top:6px;font-size:12px;color:var(--ink-faint);font-variant:small-caps}
+  .card .cn{font-variant:small-caps;letter-spacing:.05em;font-size:14px;font-weight:600;line-height:1.15;padding-left:16px}
+  .card .cn .cond{font-variant:normal;font-style:italic;font-size:10.5px;color:var(--ink-soft);letter-spacing:0;font-weight:400}
+  .card .cw{font-size:11.5px;line-height:1.3;padding-left:16px;margin-top:1px}
+  .card .cr{font-style:italic;font-size:10.5px;color:var(--ink-soft);padding-left:16px;margin-top:1px}
+  .sub{padding-left:16px;margin-top:5px;font-size:10.5px;line-height:1.45}
+  .sub .sk{font-variant:small-caps;letter-spacing:.05em;color:var(--ink-soft)}
+  .sub .model{font-style:italic;color:var(--accent)}
+  .badge{display:inline-block;font-size:10px;font-style:italic;color:var(--accent);border:1px solid var(--accent);border-radius:12px;padding:0 7px;margin-left:16px;margin-top:3px}
+  .card .proving{display:inline-block;font-size:9.5px;font-style:italic;color:var(--accent);border:1px solid var(--accent);border-radius:10px;padding:0 6px;margin-left:16px;margin-top:3px;letter-spacing:.02em}
+
+  .gate,.verify{margin:8px 0;padding:6px 10px 6px 16px;text-align:left}
+  .gate{border:1px dashed var(--accent);background:rgba(124,58,43,.06)}
+  .verify{border:1px solid var(--rule);background:var(--paper-hi)}
+  .gate .gk,.verify .vk{font-variant:small-caps;letter-spacing:.08em;font-size:12.5px;font-weight:600}
+  .gate .gk{color:var(--accent)} .verify .vk .slash{color:var(--accent)}
+  .gate .gd,.verify .vd{font-size:10.5px;color:var(--ink-soft);font-style:italic;margin-top:1px}
+
+  .rail{margin-top:8px;padding:6px 10px;border-left:3px double var(--rule);background:rgba(60,48,26,.05);font-size:10.5px;line-height:1.4}
+  .rail .rk{font-variant:small-caps;letter-spacing:.06em;font-weight:600}
+  .rail b{color:var(--accent)}
+
+  .seams{padding-left:16px;margin-top:4px;display:grid;grid-template-columns:1fr 1fr;gap:1px 10px}
+  .seam{font-size:10.5px;display:flex;gap:5px;line-height:1.25}
+  .seam .sd{color:var(--accent)} .seam b{font-weight:600}
+  .kint{font-style:italic;font-size:10.5px;color:var(--ink-soft);padding-left:16px;margin-top:5px;line-height:1.35}
+  .kint b{color:var(--gold);font-style:normal;font-variant:small-caps}
+  .loop{font-style:italic;font-size:11px;color:var(--ink-soft);text-align:center;margin-top:10px}
+  .loop .a{color:var(--ink-faint)}
+
+  /* footer band */
+  .band{display:grid;grid-template-columns:1.4fr 1fr;gap:0;border:1px solid var(--rule);margin-top:16px}
+  @media(max-width:840px){.band{grid-template-columns:1fr}}
+  .bcell{padding:11px 14px}
+  .bcell + .bcell{border-left:1px solid var(--rule)}
+  @media(max-width:840px){.bcell + .bcell{border-left:0;border-top:1px solid var(--rule)}}
+  .bcell h3{font-variant:small-caps;letter-spacing:.14em;font-size:10.5px;color:var(--ink-soft);margin:0 0 7px;font-weight:600}
+  .hand{font-size:11px;line-height:1.4;margin-bottom:4px}
+  .hand b{font-variant:small-caps;letter-spacing:.04em} .hand .d{color:var(--ink-soft);font-style:italic}
+  .two{font-size:11px;line-height:1.45;margin-bottom:6px}
+  .two b{font-variant:small-caps;letter-spacing:.04em} .two .d{color:var(--ink-soft)}
+  .floor{font-size:10.5px;line-height:1.45;font-style:italic;color:var(--ink-soft)}
+  .floor b{font-style:normal;color:var(--ink)}
+
+  .foot{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:12px;flex-wrap:wrap}
+  .foot .call{font-style:italic;font-size:12px;color:var(--ink-soft)}
+  .foot .prov{font-size:10px;color:var(--ink-faint);font-style:italic}
+  .foot .attr{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint)}
+  .fl{color:var(--ink-faint);margin:0 6px}
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <g id="cf"><path d="M2 20 C2 9 9 2 20 2 M2 14 C2 7 7 2 14 2 M6 6 q4 0 6 2 q2 2 2 6" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/><circle cx="6.5" cy="6.5" r="1.3" fill="currentColor"/></g>
+</defs></svg>
+
+<div class="stage"><div class="plate">
+  <svg class="corner tl" viewBox="0 0 34 34"><use href="#cf"/></svg>
+  <svg class="corner tr" viewBox="0 0 34 34"><use href="#cf"/></svg>
+  <svg class="corner bl" viewBox="0 0 34 34"><use href="#cf"/></svg>
+  <svg class="corner br" viewBox="0 0 34 34"><use href="#cf"/></svg>
+
+  <div class="head">
+    <svg class="rose" viewBox="0 0 100 100" aria-hidden="true">
+      <circle cx="50" cy="50" r="46" fill="none" stroke="currentColor" stroke-width="1"/>
+      <circle cx="50" cy="50" r="40" fill="none" stroke="currentColor" stroke-width=".6" opacity=".5"/>
+      <g stroke="currentColor" stroke-width="1" fill="currentColor">
+        <polygon points="50,6 55,50 50,50" opacity=".9"/><polygon points="50,6 45,50 50,50" fill="none"/>
+        <polygon points="94,50 50,55 50,50" opacity=".9"/><polygon points="94,50 50,45 50,50" fill="none"/>
+        <polygon points="50,94 45,50 50,50" opacity=".9"/><polygon points="50,94 55,50 50,50" fill="none"/>
+        <polygon points="6,50 50,45 50,50" opacity=".9"/><polygon points="6,50 50,55 50,50" fill="none"/>
+        <g opacity=".55"><polygon points="81,19 52,48 50,50"/><polygon points="81,81 52,52 50,50"/><polygon points="19,81 48,52 50,50"/><polygon points="19,19 48,48 50,50"/></g>
+      </g>
+      <circle cx="50" cy="50" r="3.2" fill="currentColor"/>
+    </svg>
+    <div class="tt">
+      <p class="kicker">The Fleet · Blood-Oath Standard · For the Wardroom</p>
+      <h1>Fleet Operating Flow</h1>
+      <p class="epigraph">Generate the shape · judge the result · delegate the grind.</p>
+    </div>
+    <div class="legend">
+      <span class="li"><span class="pip heavy"></span> Captain heavy</span>
+      <span class="li"><span class="pip light"></span> light — review &amp; bless</span>
+      <span class="li"><span class="pip deleg"></span> delegated</span>
+    </div>
+  </div>
+
+  <div class="triptych">
+
+    <!-- I — SHAPE -->
+    <div class="col">
+      <div class="phase"><span class="pn">Phase I</span><span class="pt">Shape</span><span class="pd">the front — Captain's leverage</span></div>
+      <div class="card"><span class="np"><span class="pip heavy"></span></span><span class="num">0</span><div class="cn">Spark</div><div class="cw">the idea or need surfaces</div><div class="cr">Captain — the firehose</div></div>
+      <div class="card"><span class="np"><span class="pip light"></span></span><span class="num">1</span><div class="cn">Captain's-Intent</div><div class="cw">the <em>why</em> — the soul</div><div class="cr">XO drafts · Captain blesses</div></div>
+      <div class="card"><span class="np"><span class="pip heavy"></span></span><span class="num">2</span><div class="cn">Voyage-Planning</div><div class="cw">structure + pressure-test</div><div class="cr">Captain steers · XO reconciles</div><span class="badge">Trinity: Claude · Codex · Gemini</span></div>
+      <div class="card"><span class="np"><span class="pip heavy"></span></span><span class="num">3</span><div class="cn">Hull-Spec <span class="cond">if visual</span></div><div class="cw">the look — moodboard → <em>pick</em></div><div class="cr">Captain picks · XO scores</div><span class="proving">proving — crow's-nest, in flight</span></div>
+      <div class="card"><span class="np"><span class="pip light"></span></span><span class="num">4</span><div class="cn">Ship's-Course</div><div class="cw">the buildable <em>how</em></div><div class="cr">XO + Firstmate draft</div></div>
+      <div class="gate"><div class="gk">The Gate — agree before build</div><div class="gd">XO certifies · Firstmate signs · Captain blesses</div></div>
+    </div>
+
+    <!-- II — BUILD -->
+    <div class="col">
+      <div class="phase"><span class="pn">Phase II</span><span class="pt">Build</span><span class="pd">the middle — crew-owned, behind guards</span></div>
+      <div class="card"><span class="np"><span class="pip deleg"></span></span><span class="num">5</span><div class="cn">Build — the voyage</div><div class="cr">Firstmate runs the crew · XO holds the standard</div>
+        <div class="sub"><span class="sk">Firstmate</span> <span class="model">Opus 4.8 · 1M</span> → <span class="sk">subagents</span> <span class="model">Codex · GPT-5.3</span> <span style="color:var(--ink-soft)">(the grind)</span><br><span class="sk">Local</span> <span class="model">qwen3.5:35b-a3b · gemma4:12b</span> <span style="color:var(--ink-soft)">— grindy &amp; sensitive, kept ashore</span></div>
+        <div class="sub" style="margin-top:4px"><span class="sk">Guards</span> brig · master-at-arms &nbsp;·&nbsp; <span class="sk">Watch</span> bottle-watch</div>
+      </div>
+      <div class="verify"><div class="vk"><span class="slash">/</span>No-Mistakes → XO certifies</div><div class="vd">independent, cross-family — Claude + Codex both wired, reviewer ≠ author</div></div>
+      <div class="card"><span class="np"><span class="pip heavy"></span></span><span class="num">6</span><div class="cn">Docking <span class="cond">if human-driven</span></div><div class="cw">sea-trial — Captain drives <em>before</em> commit</div><div class="cr">stood up for him · XO tech-certifies</div><span class="proving">proving — crow's-nest, in flight</span></div>
+      <div class="card"><span class="np"><span class="pip light"></span></span><span class="num">7</span><div class="cn">Merge — commission</div><div class="cw">the voyage ships</div><div class="cr">Firstmate merges + teardown</div></div>
+      <div class="rail"><span class="rk">Ship's-Log</span> — runs Build → Merge, all hands append as it happens. <b>Machine-enforced by the officer's mess</b>, not willpower. <span style="color:var(--ink-faint)">(disciplined-append 6/27 → machine-enforced 7/6)</span></div>
+    </div>
+
+    <!-- III — CLOSE -->
+    <div class="col">
+      <div class="phase"><span class="pn">Phase III</span><span class="pt">Close</span><span class="pd">the reckoning — the fleet compounds</span></div>
+      <div class="card"><span class="np"><span class="pip light"></span></span><span class="num">8</span><div class="cn">A. A. R.</div><div class="cw">mine the log, <em>not</em> memory · a crew muster · scales to blast radius</div><div class="cr">Captain weighs in · XO + Firstmate open</div>
+        <div class="seams">
+          <div class="seam"><span class="sd">✦</span><span><b>Wrong Assumptions</b></span></div>
+          <div class="seam"><span class="sd">✦</span><span><b>Silent Errors</b></span></div>
+          <div class="seam"><span class="sd">✦</span><span><b>Friction</b></span></div>
+          <div class="seam"><span class="sd">✦</span><span><b>Lessons + Hardening</b></span></div>
+          <div class="seam"><span class="sd">✦</span><span><b>Replicate</b> the wins</span></div>
+          <div class="seam"><span class="sd">✦</span><span><b>Celebrate</b></span></div>
+        </div>
+        <p class="kint"><b>Kintsugi</b> — gild the scars. Surfacing your own error is the <em>high-status</em> move; the anti-blame mechanism, and the only way silent errors see daylight.</p>
+      </div>
+      <div class="card"><span class="np"><span class="pip deleg"></span></span><span class="num">9</span><div class="cn">Liberty</div><div class="cw">close the voyage — celebrate, rest</div><div class="cr">all hands</div></div>
+      <p class="loop"><span class="a">↺</span> the AAR feeds the next Captain's-Intent — the loop closes</p>
+    </div>
+
+  </div>
+
+  <div class="band">
+    <div class="bcell">
+      <h3>The Three Hands</h3>
+      <div class="hand"><b>Captain</b> — spark · shape · judge · commission. <span class="d">the human hand on the wheel.</span></div>
+      <div class="hand"><b>XO</b> — draft intent &amp; course · hold the standard · trinity + signals · certify. <span class="d">Claude Opus 4.8 (1M) — the picture-holder, a ~2.5M-word vault in view.</span></div>
+      <div class="hand" style="margin-bottom:0"><b>Firstmate</b> — run the crew · own the build end to end. <span class="d">Claude Opus 4.8 (1M) — the deckplate.</span></div>
+    </div>
+    <div class="bcell">
+      <h3>Two Logs · The Floor</h3>
+      <div class="two"><b>Ship's-Log</b> <span class="d">— crew ops, as it happened, machine-enforced.</span> &nbsp; <b>Captain's-Log</b> <span class="d">— the Captain's own thoughts, issue-style.</span></div>
+      <div class="floor"><b>The floor, honestly:</b> the hard, unbypassable enforcement is the harness permission layer + server-side git. The <span style="font-style:normal">bin/</span> gate scripts are disciplinary convention a crewmate could route around. We say which is which.</div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <span class="call">Laid before the wardroom — poke holes, add rigging.</span>
+    <span class="prov">from the blood-oath OPERATING-FLOW (6/27) · muster verified 7/6</span>
+    <span class="attr"><span class="fl">✦</span> Plate 2 of 2 · Operating Flow <span class="fl">✦</span></span>
+  </div>
+
+</div></div>

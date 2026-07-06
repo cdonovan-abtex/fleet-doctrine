@@ -4,6 +4,20 @@ An operating philosophy — and the working pieces — for running autonomous bu
 
 Shared from a real setup. The naval framing is just a memorable handle for *who decides what.*
 
+## The maps
+
+Two engraved plates of the same system — one landscape frame each, made to be screenshotted and poked at.
+
+**Order of Command** — the *who*. The human speaks to two officers (a planner and an executor) who confer directly; the executor dispatches the crew and cheap local models; everything returns through independent, cross-family review before it reaches the human.
+
+![Order of Command](diagrams/order-of-command.png)
+
+**Operating Flow** — the *when*. One voyage from spark to close, each stage marked by how much the human's hand is on it (heavy / light / delegated). Two stages carry honest *"proving — in flight"* tags: they're being tested in a live voyage right now, not claimed as locked. The floor note says plainly which controls are enforced and which are convention.
+
+![Operating Flow](diagrams/operating-flow.png)
+
+*Source HTML for both lives in [`diagrams/`](./diagrams) — self-contained, adapt freely. The models and maturity tags reflect a real setup as of mid-2026.*
+
 ## What's here
 - **[PHILOSOPHY.md](./PHILOSOPHY.md)** — the whole system and how we think about it: roles, altitude, the channel, authority, containment, the control philosophy, and the honest story of how it got built (and what's not built yet).
 - **[CAPTAINS-INTENT.template.md](./CAPTAINS-INTENT.template.md)** — the WHY doc: north star, 5 whys, end state, limits.
