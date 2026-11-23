@@ -1,5 +1,5 @@
 ---
-standard: v1
+standard: v2
 type: SHIPS-COURSE
 project: "{{FILL: project / workstream name}}"
 date: "{{FILL: ISO date}}"
@@ -8,11 +8,14 @@ signoffs: []   # one line per signer at agreement: role · name · ISO-date
 
 # SHIPS-COURSE — {{FILL: project name}}
 
-> The HOW, carrying command's opinions + explicit latitude. Human+XO draft → the executor reviews/revises → all agree = the launch plan. Conforms to CAPTAINS-INTENT.
+> The HOW, carrying command's opinions + explicit latitude. Human+XO draft → the executor reviews/revises → all agree = the launch plan. Conforms to the repo's STRATEGY.md.
 > (Non-stub = every {{FILL: …}} sentinel replaced and each section carries real substance.)
 
-## Conformance to Intent
-{{FILL: the intent's limits + end-state this course certifies against (the XO certifies here)}}
+## End State: this voyage
+{{FILL: what is observably true when this voyage is done, the success condition. A line or two, never a task list (tasks are the course below).}}
+
+## Conformance to Strategy
+{{FILL: the STRATEGY.md limits and fork test this course certifies against (the XO certifies here)}}
 
 ## The Course — scoped plan + our opinions
 {{FILL: the plan, WITH command's strong opinions on approach / architecture / tradeoffs — not a blank for the executor to fill}}

@@ -1,10 +1,10 @@
 # blood-oath — the commissioning standard
 
-The rule: **no vessel sails without paired, agreed, signed orders at the right altitude.** Every unit of work launches with a CAPTAINS-INTENT (the why) and a SHIPS-COURSE (the how), reviewed by the executor and signed by everyone, *before* any build.
+The rule: **no vessel sails without paired, agreed, signed orders at the right altitude.** Every unit of work launches under the repo's STRATEGY.md (the why) with a SHIPS-COURSE (the how), reviewed by the executor and signed by everyone, *before* any build.
 
 ## What it's made of
-1. **The two templates** — the single source of the standard, versioned with a `standard: vN` line. ([`CAPTAINS-INTENT.template.md`](./CAPTAINS-INTENT.template.md) · [`SHIPS-COURSE.template.md`](./SHIPS-COURSE.template.md))
-2. **Commissioning** — the human stands up the repo and seeds the paired orders before the crew sails. (Building the hull is a command act; sailing it is the crew's.)
+1. **The two templates** — the single source of the standard, versioned with a `standard: vN` line. ([`STRATEGY.template.md`](./STRATEGY.template.md) · [`SHIPS-COURSE.template.md`](./SHIPS-COURSE.template.md))
+2. **Commissioning** — the human stands up the repo and seeds STRATEGY.md and the first course before the crew sails. (Building the hull is a command act; sailing it is the crew's.)
 3. **A gate** *(deferred — see below)* — a check that the orders exist, are to standard, and are signed, before build.
 
 ## The decision worth copying: launch it "in spirit"
@@ -30,4 +30,4 @@ Tamper-evidence is the append-only channel + git history — **not** a content-h
 Every piece of work carries the pair. The human + planning agent draft them with real opinions baked in; the executor **reviews and revises** the course (it's not a blank to fill); everyone signs; the human's blessing on the course is the launch. Then the crew builds within the stated latitude.
 
 ## Self-referential by design
-blood-oath was authored *as* the pair it governs — its own CAPTAINS-INTENT + SHIPS-COURSE, reviewed and signed exactly the way every launch is. The guard, built as the thing it guards. (And on that founding pass, three separate over-engineering instincts got caught before launch — every one by candor and transparency, not by a mechanism. That's the standard proving itself in the building.)
+blood-oath was authored *as* the pair it governs — its own intent doc (now STRATEGY.md) + SHIPS-COURSE, reviewed and signed exactly the way every launch is. The guard, built as the thing it guards. (And on that founding pass, three separate over-engineering instincts got caught before launch — every one by candor and transparency, not by a mechanism. That's the standard proving itself in the building.)

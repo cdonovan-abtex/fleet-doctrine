@@ -21,12 +21,14 @@ The seams matter more than the boxes. Each role plugs in at a specific point; no
 
 The core discipline. Two documents, deliberately at different altitudes:
 
-- **`CAPTAINS-INTENT.md` — the WHY.** North Star, the 5 whys, end state, hard limits, who-decides-what. Short. It's what the agents fall back to when the plan breaks.
+- **`STRATEGY.md` — the WHY.** One per repo, at its root. North Star, the 5 whys, principles, hard limits, who-decides-what, and a fork test ("a change aligns when … / should be resisted when …"). Short. It's what the agents fall back to when the plan breaks, and what they check at every fork in the road.
 - **`SHIPS-COURSE.md` — the HOW.** The scoped plan *with the human's opinions baked in*, plus an explicit **Latitude** section: exactly where the executor has free rein vs. where deviating needs the human's word. Drafted by human + XO, then the executor **reviews and revises** it, then everyone signs. That signed doc is the launch plan.
 
-**The failure this prevents:** cramming the plan into the "intent" doc. That collapses the altitude — the executor can only implement your spec and re-litigate your flaws, never *own* the design. The tell that you've drifted is a task list in the intent doc; tasks are HOW, they belong in the course. Intent steers; course executes.
+**The failure this prevents:** cramming the plan into the "intent" doc. That collapses the altitude — the executor can only implement your spec and re-litigate your flaws, never *own* the design. The tell that you've drifted is a task list in STRATEGY.md; tasks are HOW, they belong in the course. Strategy steers; course executes. The voyage's end state lives in the course too: it changes every voyage, the strategy doesn't.
 
-(Templates: [`CAPTAINS-INTENT.template.md`](./CAPTAINS-INTENT.template.md) · [`SHIPS-COURSE.template.md`](./SHIPS-COURSE.template.md).)
+**v2 (Nov 2026): CAPTAINS-INTENT folded into STRATEGY.md.** Same job. We moved it because STRATEGY.md is becoming the shared convention: one file every agent already looks for, durable across voyages, with the vision drafted from real history and stress-tested on hypotheticals the human answers.
+
+(Templates: [`STRATEGY.template.md`](./STRATEGY.template.md) · [`SHIPS-COURSE.template.md`](./SHIPS-COURSE.template.md).)
 
 ## The channel — "message-in-a-bottle" ✅
 
