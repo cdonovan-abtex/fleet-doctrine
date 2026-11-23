@@ -20,7 +20,7 @@ Two engraved plates of the same system — one landscape frame each, made to be 
 
 ## What's here
 - **[PHILOSOPHY.md](./PHILOSOPHY.md)** — the whole system and how we think about it: roles, altitude, the channel, authority, containment, the control philosophy, and the honest story of how it got built (and what's not built yet).
-- **[CAPTAINS-INTENT.template.md](./CAPTAINS-INTENT.template.md)** — the WHY doc: north star, 5 whys, end state, limits.
+- **[STRATEGY.template.md](./STRATEGY.template.md)** — the WHY doc, one per repo: north star, 5 whys, principles, limits, and the fork test agents apply when a path splits. (v2: replaces CAPTAINS-INTENT; see PHILOSOPHY.)
 - **[SHIPS-COURSE.template.md](./SHIPS-COURSE.template.md)** — the HOW doc: plan + opinions + an explicit **Latitude** section (free vs. fixed).
 - **[YEOMAN.template.md](./YEOMAN.template.md)** — the correspondence channel format: append-only, newest-on-top, with the SAFE-PREPEND rule.
 - **[blood-oath.md](./blood-oath.md)** — the commissioning standard: paired, signed orders before any build (and why we deferred the enforcement gate).
@@ -32,7 +32,7 @@ Two engraved plates of the same system — one landscape frame each, made to be 
 4. Human's blessing on the course = launch.
 
 ## The load-bearing ideas (if you read nothing else)
-- **Separate why from how** — intent steers, course executes; a task list in the intent doc is the tell you've drifted.
+- **Separate why from how** — strategy steers, course executes; a task list in STRATEGY.md is the tell you've drifted.
 - **Make latitude explicit** — state where the agent is free vs. where deviating needs your word.
 - **Prefer transparency to enforcement** — full candor + an open channel catches more than a wall, and can't wedge.
 - **Be honest about mechanism vs. discipline** — know which of your rules are actually enforced and which are just convention.
